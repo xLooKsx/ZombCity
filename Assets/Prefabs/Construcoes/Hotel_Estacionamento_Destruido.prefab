@@ -9,45 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1437694135535552}
+  m_RootGameObject: {fileID: 1008011419448816}
   m_IsPrefabParent: 1
---- !u!1 &1437694135535552
+--- !u!1 &1008011419448816
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4585601856761568}
-  - component: {fileID: 33002879118170764}
-  - component: {fileID: 23654509553597136}
-  - component: {fileID: 64321858159260174}
+  - component: {fileID: 4393900460773504}
+  - component: {fileID: 33990189905288630}
+  - component: {fileID: 23276371558243588}
+  - component: {fileID: 65445870165072872}
+  - component: {fileID: 135734126776460608}
+  - component: {fileID: 135329931044105830}
   m_Layer: 0
-  m_Name: Rua_Canto
+  m_Name: Hotel_Estacionamento_Destruido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4585601856761568
+--- !u!4 &4393900460773504
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437694135535552}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -20, y: 0, z: 0.000061035}
+  m_GameObject: {fileID: 1008011419448816}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!23 &23654509553597136
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23276371558243588
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437694135535552}
+  m_GameObject: {fileID: 1008011419448816}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -76,24 +78,46 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33002879118170764
+--- !u!33 &33990189905288630
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437694135535552}
-  m_Mesh: {fileID: 4300000, guid: f1c4e7cad77043d4eb1da10b11215f6a, type: 3}
---- !u!64 &64321858159260174
-MeshCollider:
+  m_GameObject: {fileID: 1008011419448816}
+  m_Mesh: {fileID: 4300000, guid: b1774bd68b7e19545aa0aa03f5d6a8ec, type: 3}
+--- !u!65 &65445870165072872
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437694135535552}
+  m_GameObject: {fileID: 1008011419448816}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: f1c4e7cad77043d4eb1da10b11215f6a, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 58.916443, y: 0.91, z: 45.2812}
+  m_Center: {x: -29.458221, y: -0.42279413, z: -22.640265}
+--- !u!135 &135329931044105830
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008011419448816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.66
+  m_Center: {x: -36.7, y: -1.1, z: -25.4}
+--- !u!135 &135734126776460608
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008011419448816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.66
+  m_Center: {x: -13.5, y: -0.72, z: -9.37}
