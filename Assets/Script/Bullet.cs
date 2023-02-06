@@ -16,5 +16,15 @@ public class Bullet : MonoBehaviour {
     private void FixedUpdate()
     {
         this.rigidbody.MovePosition(this.rigidbody.position + this.transform.forward * speed * Time.deltaTime);
+
+    }
+
+    private void OnTriggerEnter(Collider objetoDeColisao)
+    {
+        if (objetoDeColisao.tag == "Inimigo")
+        {
+            Destroy(objetoDeColisao.gameObject);
+        }
+        Destroy(this.gameObject);
     }
 }
