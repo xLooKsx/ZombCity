@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ControlaArma : MonoBehaviour {
 
-    public GameObject bullet;
-    public GameObject weaponBulletRespawn;
+    public GameObject Bullet;
+    public GameObject WeaponBulletRespawn;
 	
 	// Update is called once per frame
 	void Update () {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(bullet, weaponBulletRespawn.transform.position, weaponBulletRespawn.transform.rotation);
+            Instantiate(Bullet, WeaponBulletRespawn.transform.position, WeaponBulletRespawn.transform.rotation);
         }        
 	}
 }

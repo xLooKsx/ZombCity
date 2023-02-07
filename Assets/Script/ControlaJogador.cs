@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour {
 
-    public float speed = 10;
-    public LayerMask layerMask;
-    public GameObject gameOverText;
-    public bool isAlive = true;
+    public float Speed = 10;
+    public LayerMask LayerMask;
+    public GameObject GameOverText;
+    public bool IsAlive = true;
 
     private Animator animator;
     private Vector3 movimentacao;
@@ -24,7 +24,7 @@ public class ControlaJogador : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (!isAlive)
+        if (!IsAlive)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -35,7 +35,7 @@ public class ControlaJogador : MonoBehaviour {
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");
 
-        this.movimentacao = new Vector3(eixoX, 0, eixoZ) * speed * Time.deltaTime;
+        this.movimentacao = new Vector3(eixoX, 0, eixoZ) * Speed * Time.deltaTime;
         
         if(movimentacao != Vector3.zero)
         {
@@ -55,7 +55,7 @@ public class ControlaJogador : MonoBehaviour {
         Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
 
         RaycastHit impacto;
-        if(Physics.Raycast(raio, out impacto, 100, layerMask))
+        if(Physics.Raycast(raio, out impacto, 100, LayerMask))
         {
             Vector3 miraPlayer = impacto.point - transform.position;
             miraPlayer.y = transform.position.y;

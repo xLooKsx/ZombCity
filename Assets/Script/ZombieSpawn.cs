@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ZombieSpawn : MonoBehaviour {
 
-    public GameObject zombie;
-    public float zombieSpawnTime = 1;
+    public GameObject Zombie;
+    public float ZombieSpawnTime = 1;
 
     private float timeCount = 0;
 
@@ -19,8 +19,8 @@ public class ZombieSpawn : MonoBehaviour {
 
         timeCount += Time.deltaTime;
 
-        if(timeCount >= zombieSpawnTime) {
-            Instantiate(zombie, transform.position, transform.rotation);
+        if(timeCount >= ZombieSpawnTime) {
+            Instantiate(Zombie, transform.position, transform.rotation);
             timeCount = 0;
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public float speed = 30;
+    public float Speed = 30;
 
     private Rigidbody rigidbody;
 
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        this.rigidbody.MovePosition(this.rigidbody.position + this.transform.forward * speed * Time.deltaTime);
+        this.rigidbody.MovePosition(this.rigidbody.position + this.transform.forward * Speed * Time.deltaTime);
 
     }
 

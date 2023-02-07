@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComtrolaZumbi : MonoBehaviour {
 
-    public float speed = 5;
+    public float Speed = 5;
 
     private int kindOfZombie;
     private GameObject player;
@@ -39,7 +39,7 @@ public class ComtrolaZumbi : MonoBehaviour {
 
         if (distance > 2.5)
         {
-            this.rigidbody.MovePosition(this.rigidbody.position + direction.normalized * speed * Time.deltaTime);
+            this.rigidbody.MovePosition(this.rigidbody.position + direction.normalized * Speed * Time.deltaTime);
             this.animator.SetBool("Attack", false);
         }
         else
@@ -51,7 +51,7 @@ public class ComtrolaZumbi : MonoBehaviour {
     void Damage()
     {
         Time.timeScale = 0;
-        this.player.GetComponent<ControlaJogador>().gameOverText.SetActive(true);
-        this.player.GetComponent<ControlaJogador>().isAlive = false;
+        this.player.GetComponent<ControlaJogador>().GameOverText.SetActive(true);
+        this.player.GetComponent<ControlaJogador>().IsAlive = false;
     }
 }
