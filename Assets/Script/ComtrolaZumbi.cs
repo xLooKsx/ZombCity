@@ -6,6 +6,7 @@ public class ComtrolaZumbi : MonoBehaviour {
 
     public float speed = 5;
 
+    private int kindOfZombie;
     private GameObject player;
     private Rigidbody rigidbody;
     private Animator animator;
@@ -16,7 +17,11 @@ public class ComtrolaZumbi : MonoBehaviour {
         this.player = GameObject.FindWithTag("Player");
         this.rigidbody = GetComponent<Rigidbody>();
         this.animator = GetComponent<Animator>();
-	}
+
+        kindOfZombie = Random.Range(1, 28);
+        transform.GetChild(kindOfZombie).gameObject.SetActive(true);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
