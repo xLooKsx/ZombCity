@@ -5,13 +5,15 @@ using UnityEngine;
 public class ComtrolaZumbi : MonoBehaviour {
 
     public float speed = 5;
-    public GameObject player;
-    
+
+    private GameObject player;
     private Rigidbody rigidbody;
     private Animator animator;
 
 	// Use this for initialization
 	void Start () {
+
+        this.player = GameObject.FindWithTag("Player");
         this.rigidbody = GetComponent<Rigidbody>();
         this.animator = GetComponent<Animator>();
 	}
