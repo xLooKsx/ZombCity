@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class ControlaCamera : MonoBehaviour {
 
-    public GameObject player;
+    public GameObject Player;
 
     private Vector3 distance;
 
 	// Use this for initialization
 	void Start () {
 
-        this.distance = this.transform.position - player.transform.position;
+        this.distance = this.transform.position - Player.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        this.transform.position = player.transform.position + distance;
+        this.transform.position = Player.transform.position + distance;
 	}
 }
