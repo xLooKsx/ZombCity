@@ -8,7 +8,8 @@ public class ControlaJogador : MonoBehaviour {
     public float Speed = 10;
     public LayerMask LayerMask;
     public GameObject GameOverText;
-    public bool IsAlive = true;
+    public int LifeCount = 100;
+    public ControlaInterface ScriptControlaInterface;
 
     private Animator animator;
     private Vector3 movimentacao;
@@ -24,7 +25,7 @@ public class ControlaJogador : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (!IsAlive)
+        if (this.LifeCount <=0)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -64,5 +65,16 @@ public class ControlaJogador : MonoBehaviour {
             Quaternion rotacaoJogador = Quaternion.LookRotation(miraPlayer);
             this.rigidbody.MoveRotation(rotacaoJogador);
         }
+    }
+
+    public void RecieveDamage(int damage)
+    {
+        this.LifeCount -= damage;
+        this.ScriptControlaInterface.UpdateSlideHealthbar();
+        if (this.LifeCount <= 0)
+        {
+            Time.timeScale = 0;
+            this.GameOverText.SetActive(true);
+        }        
     }
 }

@@ -50,8 +50,6 @@ public class ComtrolaZumbi : MonoBehaviour {
 
     void Damage()
     {
-        Time.timeScale = 0;
-        this.player.GetComponent<ControlaJogador>().GameOverText.SetActive(true);
-        this.player.GetComponent<ControlaJogador>().IsAlive = false;
+        this.player.GetComponent<ControlaJogador>().RecieveDamage(Random.Range(20, 31));
     }
 }
