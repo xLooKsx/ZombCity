@@ -10,6 +10,7 @@ public class ControlaJogador : MonoBehaviour {
     public GameObject GameOverText;
     public int LifeCount = 100;
     public ControlaInterface ScriptControlaInterface;
+    public AudioClip DamageSound;
 
     private Animator animator;
     private Vector3 movimentacao;
@@ -71,6 +72,7 @@ public class ControlaJogador : MonoBehaviour {
     {
         this.LifeCount -= damage;
         this.ScriptControlaInterface.UpdateSlideHealthbar();
+        ControlaAudio.Instance.PlayOneShot(this.DamageSound);
         if (this.LifeCount <= 0)
         {
             Time.timeScale = 0;
