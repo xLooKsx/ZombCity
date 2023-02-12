@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4102115031814162}
   - component: {fileID: 33415403585846360}
   - component: {fileID: 23584536251452372}
+  - component: {fileID: 65034293472743654}
   m_Layer: 0
   m_Name: Barreira_02
   m_TagString: Untagged
@@ -34,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197724290165082}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.017293451, y: -0.12932575, z: -0.0330464, w: 0.9909005}
+  m_LocalPosition: {x: -50.331577, y: -0.35975814, z: 9.580454}
+  m_LocalScale: {x: 1.43185, y: 1.43185, z: 2.74819}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.4740001, y: -14.923, z: -4.013}
 --- !u!23 &23584536251452372
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -50,6 +51,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -65,6 +67,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -80,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197724290165082}
   m_Mesh: {fileID: 4300000, guid: eedc9d90192cf6c45add15403e807c0e, type: 3}
+--- !u!65 &65034293472743654
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197724290165082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.630561, y: 1.6967926, z: 2.7744083}
+  m_Center: {x: 0.08398402, y: 0.8483963, z: -0.0731495}
