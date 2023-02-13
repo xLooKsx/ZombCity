@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public float Speed = 30;
+    public AudioClip ZombieHitSound;
 
     private Rigidbody rigidbody;
 
@@ -24,6 +25,7 @@ public class Bullet : MonoBehaviour {
         if (objetoDeColisao.tag == "Inimigo")
         {
             Destroy(objetoDeColisao.gameObject);
+            //ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
         }
         Destroy(this.gameObject);
     }

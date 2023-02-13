@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd370cb05e7bd494ca8c0d3ee6e64adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  Speed: 30
+  ZombieHitSound: {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
