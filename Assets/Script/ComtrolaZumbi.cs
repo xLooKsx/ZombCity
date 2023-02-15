@@ -6,46 +6,41 @@ public class ComtrolaZumbi : MonoBehaviour {
 
     public float Speed = 5;
 
-    private int kindOfZombie;
+    private int zombieType;
     private GameObject player;
-    private Rigidbody rigidbody;
-    private Animator animator;
+    private Movement movement;
+    private AnimationController animationController;
 
 	// Use this for initialization
 	void Start () {
 
-        this.player = GameObject.FindWithTag("Player");
-        this.rigidbody = GetComponent<Rigidbody>();
-        this.animator = GetComponent<Animator>();
-
-        kindOfZombie = Random.Range(1, 28);
-        transform.GetChild(kindOfZombie).gameObject.SetActive(true);
-
+        this.player = GameObject.FindWithTag("Player");        
+        this.movement = GetComponent<Movement>();
+        this.animationController = GetComponent<AnimationController>();
+        generateAnRandomZombieSkin();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void FixedUpdate()
     {       
         float distance = Vector3.Distance(player.transform.position, transform.position);
-
         Vector3 direction = player.transform.position - transform.position;
-
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        this.rigidbody.MoveRotation(rotation);
+        this.movement.LookRotation(direction);
 
         if (distance > 2.5)
         {
-            this.rigidbody.MovePosition(this.rigidbody.position + direction.normalized * Speed * Time.deltaTime);
-            this.animator.SetBool("Attack", false);
+            movement.Move(direction, Speed);
+            this.animationController.ZombieAtk(false);
         }
         else
         {
-            this.animator.SetBool("Attack", true);
+            this.animationController.ZombieAtk(true);
         }        
+    }
+
+    void generateAnRandomZombieSkin()
+    {
+        zombieType = Random.Range(1, 28);
+        transform.GetChild(zombieType).gameObject.SetActive(true);
     }
 
     void Damage()
