@@ -6,20 +6,20 @@ public class ComtrolaZumbi : MonoBehaviour {
 
     public float Speed = 5;
 
-    private int kindOfZombie;
+    private int zombieType;
     private GameObject player;
-    private Rigidbody rigidbody;
     private Animator animator;
+    private Movement movement;
 
 	// Use this for initialization
 	void Start () {
 
         this.player = GameObject.FindWithTag("Player");
-        this.rigidbody = GetComponent<Rigidbody>();
         this.animator = GetComponent<Animator>();
+        this.movement = GetComponent<Movement>();
 
-        kindOfZombie = Random.Range(1, 28);
-        transform.GetChild(kindOfZombie).gameObject.SetActive(true);
+        zombieType = Random.Range(1, 28);
+        transform.GetChild(zombieType).gameObject.SetActive(true);
 
     }
 	
@@ -31,15 +31,12 @@ public class ComtrolaZumbi : MonoBehaviour {
     private void FixedUpdate()
     {       
         float distance = Vector3.Distance(player.transform.position, transform.position);
-
         Vector3 direction = player.transform.position - transform.position;
-
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        this.rigidbody.MoveRotation(rotation);
+        this.movement.LookRotation(direction);
 
         if (distance > 2.5)
         {
-            this.rigidbody.MovePosition(this.rigidbody.position + direction.normalized * Speed * Time.deltaTime);
+            movement.Move(direction, Speed);
             this.animator.SetBool("Attack", false);
         }
         else

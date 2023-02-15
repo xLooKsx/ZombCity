@@ -14,13 +14,13 @@ public class ControlaJogador : MonoBehaviour {
 
     private Animator animator;
     private Vector3 movimentacao;
-    private Rigidbody rigidbody;
+    private Movement movement;
 
     private void Start()
     {
         Time.timeScale = 1;
         this.animator = GetComponent<Animator>();
-        this.rigidbody = GetComponent<Rigidbody>();
+        this.movement = GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class ControlaJogador : MonoBehaviour {
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");
 
-        this.movimentacao = new Vector3(eixoX, 0, eixoZ) * Speed * Time.deltaTime;
+        this.movimentacao = new Vector3(eixoX, 0, eixoZ);
         
         if(movimentacao != Vector3.zero)
         {
@@ -51,20 +51,18 @@ public class ControlaJogador : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        this.rigidbody.MovePosition(this.rigidbody.position + movimentacao);
 
+        movement.Move(movimentacao, Speed);
         Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
 
         RaycastHit impacto;
         if(Physics.Raycast(raio, out impacto, 100, LayerMask))
         {
-            Vector3 miraPlayer = impacto.point - transform.position;
-            miraPlayer.y = transform.position.y;
-
-
-            Quaternion rotacaoJogador = Quaternion.LookRotation(miraPlayer);
-            this.rigidbody.MoveRotation(rotacaoJogador);
+            Vector3 playerAim = impacto.point - transform.position;
+            playerAim.y = transform.position.y;
+            
+            this.movement.LookRotation(playerAim);
         }
     }
 
