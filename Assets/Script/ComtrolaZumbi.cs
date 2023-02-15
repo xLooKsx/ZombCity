@@ -8,25 +8,17 @@ public class ComtrolaZumbi : MonoBehaviour {
 
     private int zombieType;
     private GameObject player;
-    private Animator animator;
     private Movement movement;
+    private AnimationController animationController;
 
 	// Use this for initialization
 	void Start () {
 
-        this.player = GameObject.FindWithTag("Player");
-        this.animator = GetComponent<Animator>();
+        this.player = GameObject.FindWithTag("Player");        
         this.movement = GetComponent<Movement>();
-
-        zombieType = Random.Range(1, 28);
-        transform.GetChild(zombieType).gameObject.SetActive(true);
-
+        this.animationController = GetComponent<AnimationController>();
+        generateAnRandomZombieSkin();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void FixedUpdate()
     {       
@@ -37,12 +29,18 @@ public class ComtrolaZumbi : MonoBehaviour {
         if (distance > 2.5)
         {
             movement.Move(direction, Speed);
-            this.animator.SetBool("Attack", false);
+            this.animationController.ZombieAtk(false);
         }
         else
         {
-            this.animator.SetBool("Attack", true);
+            this.animationController.ZombieAtk(true);
         }        
+    }
+
+    void generateAnRandomZombieSkin()
+    {
+        zombieType = Random.Range(1, 28);
+        transform.GetChild(zombieType).gameObject.SetActive(true);
     }
 
     void Damage()

@@ -11,16 +11,16 @@ public class ControlaJogador : MonoBehaviour {
     public int LifeCount = 100;
     public ControlaInterface ScriptControlaInterface;
     public AudioClip DamageSound;
-
-    private Animator animator;
+    
     private Vector3 movimentacao;
-    private Movement movement;
+    private PlayerMovement movement;
+    private AnimationController animationController;
 
     private void Start()
     {
         Time.timeScale = 1;
-        this.animator = GetComponent<Animator>();
-        this.movement = GetComponent<Movement>();
+        this.movement = GetComponent<PlayerMovement>();
+        this.animationController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
@@ -38,32 +38,14 @@ public class ControlaJogador : MonoBehaviour {
         float eixoZ = Input.GetAxis("Vertical");
 
         this.movimentacao = new Vector3(eixoX, 0, eixoZ);
-        
-        if(movimentacao != Vector3.zero)
-        {
-            animator.SetBool("isRunning", true);
-        }
-        else
-        {
-            animator.SetBool("isRunning", false);
-        }
+        this.animationController.Walk(this.movimentacao.magnitude);
 	}
 
     private void FixedUpdate()
     {
-
-        movement.Move(movimentacao, Speed);
-        Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
-
-        RaycastHit impacto;
-        if(Physics.Raycast(raio, out impacto, 100, LayerMask))
-        {
-            Vector3 playerAim = impacto.point - transform.position;
-            playerAim.y = transform.position.y;
-            
-            this.movement.LookRotation(playerAim);
-        }
+        this.movement.Move(this.movimentacao, this.Speed);
+        this.movement.LookAround(LayerMask);
+       
     }
 
     public void RecieveDamage(int damage)
