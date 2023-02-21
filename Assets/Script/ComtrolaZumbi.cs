@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComtrolaZumbi : MonoBehaviour {
-    
+public class ComtrolaZumbi : MonoBehaviour, IDamage{
+
+    public AudioClip ZombieHitSound;
+
     private int zombieType;
     private GameObject player;
     private Movement movement;
@@ -45,6 +47,21 @@ public class ComtrolaZumbi : MonoBehaviour {
 
     void Damage()
     {
-        this.player.GetComponent<ControlaJogador>().RecieveDamage(Random.Range(20, 31));
+        this.player.GetComponent<ControlaJogador>().TakeDamage(Random.Range(20, 31));
+    }
+
+    public void TakeDamage(int damageValue)
+    {
+        this.status.Life -= damageValue;
+        ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
+        if (this.status.Life <= 0)
+        {
+            this.Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 }
