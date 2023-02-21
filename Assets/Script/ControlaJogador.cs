@@ -9,8 +9,7 @@ public class ControlaJogador : MonoBehaviour, IDamage {
     public GameObject GameOverText;
     public ControlaInterface ScriptControlaInterface;
     public AudioClip DamageSound;
-    [HideInInspector]
-    public Status Status;
+    [HideInInspector] public Status Status;
 
     private Vector3 movimentacao;
     private PlayerMovement movement;
