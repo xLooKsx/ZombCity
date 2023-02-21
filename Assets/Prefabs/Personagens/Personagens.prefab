@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1884102019447498}
   m_IsPrefabParent: 1
+--- !u!1 &1043770691669128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4815901120364878}
+  m_Layer: 0
+  m_Name: weaponBulletRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1084999060934410
 GameObject:
   m_ObjectHideFlags: 1
@@ -654,9 +669,12 @@ GameObject:
   - component: {fileID: 136190627729145568}
   - component: {fileID: 54238146166151930}
   - component: {fileID: 114611866414542044}
+  - component: {fileID: 114449170427271298}
+  - component: {fileID: 114638879517713364}
+  - component: {fileID: 114025621106162074}
   m_Layer: 0
   m_Name: Personagens
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1184,6 +1202,7 @@ Transform:
   - {fileID: 4789171435226948}
   - {fileID: 4188126387179866}
   - {fileID: 4925541059680036}
+  - {fileID: 4815901120364878}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1318,6 +1337,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4610746654156704}
   m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4815901120364878
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043770691669128}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.041, y: 2.294, z: 2.853}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4610746654156704}
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4816384622087894
 Transform:
@@ -1665,10 +1697,10 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884102019447498}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -1690,6 +1722,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114025621106162074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd78de4272cb1fd41b0925c5eb33305b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxLife: 100
+  Life: 0
+  velocity: 10
+--- !u!114 &114449170427271298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08772beee28c7dc44ab6de7a4735bd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114611866414542044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1699,6 +1756,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b59f5c3a6cd52642a36a23c6e2295f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 1807029580996606, guid: a44b10cb97cab464c8621a65b70c37bb, type: 2}
+  WeaponBulletRespawn: {fileID: 1043770691669128}
+  shootSound: {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}
+--- !u!114 &114638879517713364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340c4e6133522c84683572af3cdc7660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114785786571103886
@@ -1712,7 +1783,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b373ab755279d147bdc0a59e6229af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 13
+  Speed: 10
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  GameOverText: {fileID: 0}
+  LifeCount: 100
+  ScriptControlaInterface: {fileID: 0}
+  DamageSound: {fileID: 8300000, guid: 58a5d36d6b134014ea5623d9802082e2, type: 3}
 --- !u!136 &136190627729145568
 CapsuleCollider:
   m_ObjectHideFlags: 1

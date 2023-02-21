@@ -13,7 +13,7 @@ public class ControlaInterface : MonoBehaviour {
 	void Start () {
         scriptControlaJogador = GameObject.FindWithTag("Player").GetComponent<ControlaJogador>();
 
-        this.SliderHealthbar.maxValue = this.scriptControlaJogador.LifeCount;
+        this.SliderHealthbar.maxValue = this.scriptControlaJogador.Status.Life;
         this.UpdateSlideHealthbar();
     }
 	
@@ -25,6 +25,6 @@ public class ControlaInterface : MonoBehaviour {
 
     public void UpdateSlideHealthbar()
     {
-        this.SliderHealthbar.value = scriptControlaJogador.LifeCount;
+        this.SliderHealthbar.value = scriptControlaJogador.Status.Life;
     }
 }

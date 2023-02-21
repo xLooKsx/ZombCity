@@ -4,29 +4,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour {
-
-    public float Speed = 10;
+    
     public LayerMask LayerMask;
     public GameObject GameOverText;
-    public int LifeCount = 100;
     public ControlaInterface ScriptControlaInterface;
     public AudioClip DamageSound;
-    
+    [HideInInspector]
+    public Status Status;
+
     private Vector3 movimentacao;
     private PlayerMovement movement;
     private AnimationController animationController;
-
+    
     private void Start()
     {
         Time.timeScale = 1;
         this.movement = GetComponent<PlayerMovement>();
         this.animationController = GetComponent<AnimationController>();
+        this.Status = GetComponent<Status>();
     }
 
     // Update is called once per frame
     void Update () {
 
-        if (this.LifeCount <=0)
+        if (this.Status.Life <= 0)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -43,17 +44,17 @@ public class ControlaJogador : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        this.movement.Move(this.movimentacao, this.Speed);
+        this.movement.Move(this.movimentacao, this.Status.velocity);
         this.movement.LookAround(LayerMask);
        
     }
 
     public void RecieveDamage(int damage)
     {
-        this.LifeCount -= damage;
+        this.Status.Life -= damage;
         this.ScriptControlaInterface.UpdateSlideHealthbar();
         ControlaAudio.Instance.PlayOneShot(this.DamageSound);
-        if (this.LifeCount <= 0)
+        if (this.Status.Life <= 0)
         {
             Time.timeScale = 0;
             this.GameOverText.SetActive(true);

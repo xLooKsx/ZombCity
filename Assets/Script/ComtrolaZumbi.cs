@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ComtrolaZumbi : MonoBehaviour {
-
-    public float Speed = 5;
-
+    
     private int zombieType;
     private GameObject player;
     private Movement movement;
     private AnimationController animationController;
+    private Status status;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +16,7 @@ public class ComtrolaZumbi : MonoBehaviour {
         this.player = GameObject.FindWithTag("Player");        
         this.movement = GetComponent<Movement>();
         this.animationController = GetComponent<AnimationController>();
+        this.status = GetComponent<Status>();
         generateAnRandomZombieSkin();
     }
 
@@ -28,7 +28,7 @@ public class ComtrolaZumbi : MonoBehaviour {
 
         if (distance > 2.5)
         {
-            movement.Move(direction, Speed);
+            movement.Move(direction, this.status.velocity);
             this.animationController.ZombieAtk(false);
         }
         else
