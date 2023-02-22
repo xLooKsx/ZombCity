@@ -5,6 +5,7 @@ using UnityEngine;
 public class ComtrolaZumbi : MonoBehaviour, IDamage{
 
     public AudioClip ZombieHitSound;
+    public float distance;
 
     private int zombieType;
     private GameObject player;
@@ -16,6 +17,9 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
     private float walkAroundCounter;
     private readonly float timeBetweenDirectionChange = 4;
     private readonly int zombieWalkAroundRadius = 10;
+    private readonly float distanceFromPlayerToWalkAround = 14;
+    private readonly float maxDistanceFromPlayerChaseAfterHim = 13;
+    private readonly float minDistanceFromPlayerChaseAfterHim = 2;
 
 
     // Use this for initialization
@@ -30,20 +34,25 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
 
     private void FixedUpdate()
     {       
-        float distance = Vector3.Distance(player.transform.position, transform.position);
+        distance = Vector3.Distance(player.transform.position, transform.position);
         
 
-        if(distance > 14)
+        if(distance >= this.distanceFromPlayerToWalkAround)
         {
             WalkAround();
         }
-        else if (distance > 7)
+        else if (distance <= this.maxDistanceFromPlayerChaseAfterHim 
+            && distance >= this.minDistanceFromPlayerChaseAfterHim)
         {
             chaseAfterPlayer();
         }
+        else if(distance < this.minDistanceFromPlayerChaseAfterHim)
+        {
+           this.animationController.ZombieAtk(true);
+        }
         else
         {
-            this.animationController.ZombieAtk(true);
+            this.animationController.ZombieAtk(false);
         }        
     }
 
@@ -51,7 +60,6 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
     {
         this.myPosition = player.transform.position - transform.position;
         movement.Move(myPosition, this.status.velocity);
-        this.animationController.ZombieAtk(false);
     }
 
     private void WalkAround()
