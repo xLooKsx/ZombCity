@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour {
         this.rigidbody.MovePosition(this.rigidbody.position + direction.normalized * speed * Time.deltaTime);
     }
 
-    protected void LookRotation(Vector3 direction)
+    public void LookRotation(Vector3 direction)
     {
         if(direction != Vector3.zero) { 
             Quaternion rotation = Quaternion.LookRotation(direction);

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour, IDamage {
     
@@ -17,7 +16,6 @@ public class ControlaJogador : MonoBehaviour, IDamage {
     
     private void Start()
     {
-        Time.timeScale = 1;
         this.movement = GetComponent<PlayerMovement>();
         this.animationController = GetComponent<AnimationController>();
         this.Status = GetComponent<Status>();
@@ -25,14 +23,6 @@ public class ControlaJogador : MonoBehaviour, IDamage {
 
     // Update is called once per frame
     void Update () {
-
-        if (this.Status.Life <= 0)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                SceneManager.LoadScene("Hotel");
-            }
-        }
 
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");
@@ -62,7 +52,6 @@ public class ControlaJogador : MonoBehaviour, IDamage {
 
     public void Die()
     {
-        Time.timeScale = 0;
-        this.GameOverText.SetActive(true);
+        this.ScriptControlaInterface.GameOver();
     }
 }
