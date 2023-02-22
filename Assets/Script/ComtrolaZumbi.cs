@@ -80,6 +80,7 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
         }
         else
         {
+            this.myPosition = this.randomPosition - transform.position;
            this.animationController.Walk(0);
         }
        

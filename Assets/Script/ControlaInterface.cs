@@ -9,9 +9,14 @@ public class ControlaInterface : MonoBehaviour {
     public Slider SliderHealthbar;
     public GameObject GameOverPanel;
     public Text SurvivingText;
+    public Text BestSurvivingTimeText;
 
-    private ControlaJogador scriptControlaJogador;    
-    private readonly string initialSurvivingText = "Você Sobreviveu por ";
+    private ControlaJogador scriptControlaJogador;
+    private float bestSurvivingTime;
+    private int minutes = 0;
+    private int seconds = 0;
+    private readonly string initialSurvivingText = "Você Sobreviveu por {0}min e {1}s";
+    private readonly string bestSurvivingText = "Melhor Tempo {0}min e {1}s";
 
     // Use this for initialization
     void Start () {
@@ -20,6 +25,7 @@ public class ControlaInterface : MonoBehaviour {
         this.SliderHealthbar.maxValue = this.scriptControlaJogador.Status.Life;
         this.UpdateSlideHealthbar();
         Time.timeScale = 1;
+        this.bestSurvivingTime = PlayerPrefs.GetFloat("HiScore");
     }
 
     public void UpdateSlideHealthbar()
@@ -31,15 +37,32 @@ public class ControlaInterface : MonoBehaviour {
     {
         this.GameOverPanel.SetActive(true);
         Time.timeScale = 0;
+        
+        GetMinuteAndSecond(Time.timeSinceLevelLoad);
+        this.SurvivingText.text = string.Format(initialSurvivingText, minutes, seconds);
 
-        int minutes = (int)Time.timeSinceLevelLoad / 60;
-        int seconds = (int)Time.timeSinceLevelLoad % 60;
-
-        this.SurvivingText.text = initialSurvivingText + minutes + " min e "+seconds+"s";    
+        CheckHiScore();        
     }
 
     public void ReloadScene()
     {
         SceneManager.LoadScene("Hotel");
+    }
+
+    void CheckHiScore()
+    {
+        if(Time.timeSinceLevelLoad > this.bestSurvivingTime)
+        {            
+            PlayerPrefs.SetFloat("HiScore", Time.timeSinceLevelLoad);
+            this.bestSurvivingTime = Time.timeSinceLevelLoad;
+        }
+        GetMinuteAndSecond(this.bestSurvivingTime);
+        this.BestSurvivingTimeText.text = string.Format(bestSurvivingText, minutes, seconds);
+    }
+
+    void GetMinuteAndSecond(float time)
+    {
+       this.minutes = (int)time / 60;
+        this.seconds = (int)time % 60;
     }
 }
