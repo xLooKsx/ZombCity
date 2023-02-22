@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33560304893564068}
   - component: {fileID: 23150622618481222}
   - component: {fileID: 65335489328211478}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TanqueDeGuerra_Destruido
   m_TagString: Untagged
   m_Icon: {fileID: 0}

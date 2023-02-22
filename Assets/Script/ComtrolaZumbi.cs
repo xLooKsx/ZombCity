@@ -63,7 +63,7 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
             this.walkAroundCounter += this.timeBetweenDirectionChange;
         }
 
-        bool isCloseEnough = Vector3.Distance(transform.position, this.randomPosition) <= 0.5;
+        bool isCloseEnough = Vector3.Distance(transform.position, this.randomPosition) <= 0.05;
         if (!isCloseEnough)
         {
             this.myPosition = this.randomPosition - transform.position;

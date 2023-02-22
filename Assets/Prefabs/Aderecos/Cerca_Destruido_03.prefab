@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33751951709322054}
   - component: {fileID: 23349630997460238}
   - component: {fileID: 65891911892650682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cerca_Destruido_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833791062960894}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.69, y: 0.036084116, z: -10.49}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.041101, y: 38.77172, z: 28.370502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

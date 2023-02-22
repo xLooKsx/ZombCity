@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4678118047085270}
   - component: {fileID: 33770718892949906}
   - component: {fileID: 23830087239985714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GaleriaDeLojas_Destruido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 65158617434547296}
   - component: {fileID: 65601864967805334}
   - component: {fileID: 65917913646851788}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mall_Extras_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037098259321732}
   m_LocalRotation: {x: -0, y: 0.7091873, z: -0, w: 0.7050202}
-  m_LocalPosition: {x: -15.085161, y: 21.456116, z: -34.903496}
+  m_LocalPosition: {x: -15.085, y: 21.456, z: -34.946}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4610746265636770}
@@ -254,8 +254,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 42.868126, y: 10.036471, z: 13.222074}
-  m_Center: {x: -18.19529, y: 4.743544, z: 26.520645}
+  m_Size: {x: 40.96747, y: 10.036471, z: 10.393636}
+  m_Center: {x: -19.145702, y: 4.743544, z: 27.93482}
 --- !u!65 &65601864967805334
 BoxCollider:
   m_ObjectHideFlags: 1

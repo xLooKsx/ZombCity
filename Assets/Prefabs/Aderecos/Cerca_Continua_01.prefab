@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33670411586703474}
   - component: {fileID: 23066299433109638}
   - component: {fileID: 65481324023487984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cerca_Continua_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572470896598266}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 31.26, y: 0.036084175, z: -0.13}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.041101, y: 38.77172, z: 43.2505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

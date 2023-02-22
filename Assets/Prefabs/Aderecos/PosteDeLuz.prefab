@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4151080590931834}
   - component: {fileID: 108685635500521174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33301532895125680}
   - component: {fileID: 23826451945339750}
   - component: {fileID: 65399545867342780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PosteDeLuz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
