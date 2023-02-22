@@ -6,8 +6,7 @@ public class Status : MonoBehaviour {
 
     public int MaxLife = 100;
 
-    [HideInInspector]
-    public int Life;
+    [HideInInspector] public int Life;
 
     public float velocity = 5;
 

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControlaJogador : MonoBehaviour {
+public class ControlaJogador : MonoBehaviour, IDamage {
     
     public LayerMask LayerMask;
     public GameObject GameOverText;
     public ControlaInterface ScriptControlaInterface;
     public AudioClip DamageSound;
-    [HideInInspector]
-    public Status Status;
+    [HideInInspector] public Status Status;
 
     private Vector3 movimentacao;
     private PlayerMovement movement;
@@ -49,15 +48,21 @@ public class ControlaJogador : MonoBehaviour {
        
     }
 
-    public void RecieveDamage(int damage)
+    public void TakeDamage(int damageValue)
     {
-        this.Status.Life -= damage;
+        this.Status.Life -= damageValue;
         this.ScriptControlaInterface.UpdateSlideHealthbar();
         ControlaAudio.Instance.PlayOneShot(this.DamageSound);
         if (this.Status.Life <= 0)
         {
-            Time.timeScale = 0;
-            this.GameOverText.SetActive(true);
-        }        
+            this.Die();
+        }
+           
+    }
+
+    public void Die()
+    {
+        Time.timeScale = 0;
+        this.GameOverText.SetActive(true);
     }
 }
