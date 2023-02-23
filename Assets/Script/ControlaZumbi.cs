@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComtrolaZumbi : MonoBehaviour, IDamage{
+public class ControlaZumbi : MonoBehaviour, IDamage{
 
     public AudioClip ZombieHitSound;
     public float distance;
+    public GameObject medKitPrefab;
 
     private int zombieType;
     private GameObject player;
@@ -15,11 +16,12 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
     private Vector3 randomPosition;
     private Vector3 myPosition;
     private float walkAroundCounter;
+    private float medKitPercentageSpawn = 0.1f;
     private readonly float timeBetweenDirectionChange = 4;
     private readonly int zombieWalkAroundRadius = 10;
     private readonly float distanceFromPlayerToWalkAround = 14;
     private readonly float maxDistanceFromPlayerChaseAfterHim = 13;
-    private readonly float minDistanceFromPlayerChaseAfterHim = 2;
+    private readonly float minDistanceFromPlayerChaseAfterHim = 2.5f;
 
 
     // Use this for initialization
@@ -42,24 +44,27 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
             WalkAround();
         }
         else if (distance <= this.maxDistanceFromPlayerChaseAfterHim 
-            && distance >= this.minDistanceFromPlayerChaseAfterHim)
+            && distance > this.minDistanceFromPlayerChaseAfterHim)
         {
-            chaseAfterPlayer();
+            ChaseAfterPlayer();
         }
-        else if(distance < this.minDistanceFromPlayerChaseAfterHim)
+        else if(distance <= this.minDistanceFromPlayerChaseAfterHim)
         {
            this.animationController.ZombieAtk(true);
         }
         else
         {
             this.animationController.ZombieAtk(false);
-        }        
+        }
+       
+            
     }
 
-    private void chaseAfterPlayer()
+    private void ChaseAfterPlayer()
     {
         this.myPosition = player.transform.position - transform.position;
         movement.Move(myPosition, this.status.velocity);
+        this.animationController.ZombieAtk(false);
     }
 
     private void WalkAround()
@@ -83,7 +88,7 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
             this.myPosition = this.randomPosition - transform.position;
            this.animationController.Walk(0);
         }
-       
+        this.animationController.ZombieAtk(false);
 
     }
 
@@ -101,9 +106,10 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
     public void TakeDamage(int damageValue)
     {
         this.status.Life -= damageValue;
-        ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
         if (this.status.Life <= 0)
         {
+            DropHealthKit();
+            ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
             this.Die();
         }
     }
@@ -120,5 +126,13 @@ public class ComtrolaZumbi : MonoBehaviour, IDamage{
         position.y = 0;
 
         return position;
+    }
+
+    void DropHealthKit()
+    {
+        if(Random.value <= this.medKitPercentageSpawn)
+        {
+            Instantiate(this.medKitPrefab, this.transform.position, Quaternion.identity);
+        }
     }
 }

@@ -50,6 +50,12 @@ public class ControlaJogador : MonoBehaviour, IDamage {
            
     }
 
+    public void RecieveHeal(int amount)
+    {
+        this.Status.SetAmountToHeal(amount);
+        this.ScriptControlaInterface.UpdateSlideHealthbar();
+    }
+
     public void Die()
     {
         this.ScriptControlaInterface.GameOver();

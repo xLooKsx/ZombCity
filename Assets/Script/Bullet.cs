@@ -5,7 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public float Speed = 30;
-    
+
+    private readonly int damage = 50;
     private Rigidbody rigidbody;
 
     private void Start()
@@ -23,8 +24,7 @@ public class Bullet : MonoBehaviour {
     {
         if (objetoDeColisao.tag == "Inimigo")
         {
-            objetoDeColisao.GetComponent<ComtrolaZumbi>().TakeDamage(30);
-            Destroy(objetoDeColisao.gameObject);
+            objetoDeColisao.GetComponent<ControlaZumbi>().TakeDamage(damage);
             
         }
         Destroy(this.gameObject);
