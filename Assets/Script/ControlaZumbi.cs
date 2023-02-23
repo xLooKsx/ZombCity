@@ -7,6 +7,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     public AudioClip ZombieHitSound;
     public float distance;
     public GameObject medKitPrefab;
+    
 
     private int zombieType;
     private GameObject player;
@@ -16,7 +17,9 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     private Vector3 randomPosition;
     private Vector3 myPosition;
     private float walkAroundCounter;
-    private float medKitPercentageSpawn = 0.1f;
+    private ControlaInterface controlaInterface;
+
+    private readonly float medKitPercentageSpawn = 0.1f;
     private readonly float timeBetweenDirectionChange = 4;
     private readonly int zombieWalkAroundRadius = 10;
     private readonly float distanceFromPlayerToWalkAround = 14;
@@ -32,6 +35,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
         this.animationController = GetComponent<AnimationController>();
         this.status = GetComponent<Status>();
         generateAnRandomZombieSkin();
+        controlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
     }
 
     private void FixedUpdate()
@@ -107,9 +111,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     {
         this.status.Life -= damageValue;
         if (this.status.Life <= 0)
-        {
-            DropHealthKit();
-            ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
+        {           
             this.Die();
         }
     }
@@ -117,6 +119,10 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     public void Die()
     {
         Destroy(this.gameObject);
+        DropHealthKit();
+        ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
+        this.controlaInterface.UpdateZombiesKilled();
+        
     }
 
     private Vector3 GenerateRandomPosition()
