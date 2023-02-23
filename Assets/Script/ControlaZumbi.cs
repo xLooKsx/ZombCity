@@ -78,7 +78,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
         if(this.walkAroundCounter <= 0)
         {
             this.randomPosition = GenerateRandomPosition();
-            this.walkAroundCounter += this.timeBetweenDirectionChange;
+            this.walkAroundCounter += this.timeBetweenDirectionChange + Random.Range(-2f, 4f);
         }
 
         bool isCloseEnough = Vector3.Distance(transform.position, this.randomPosition) <= 0.05;
