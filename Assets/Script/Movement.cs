@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour {
 
     public void LookRotation(Vector3 direction)
     {
-        if(direction != Vector3.zero) { 
+        if(direction != Vector3.zero) {
             Quaternion rotation = Quaternion.LookRotation(direction);
             this.rigidbody.MoveRotation(rotation);
         }

@@ -1772,6 +1772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340c4e6133522c84683572af3cdc7660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunBarrel: {fileID: 1043770691669128}
+  inPoint: {x: 0, y: 0, z: 0}
+  inNormal: {x: 0, y: 0, z: 0}
 --- !u!114 &114785786571103886
 MonoBehaviour:
   m_ObjectHideFlags: 1
