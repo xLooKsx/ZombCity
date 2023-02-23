@@ -35,7 +35,7 @@ public class ControlaJogador : MonoBehaviour, IDamage {
     {
         this.movement.Move(this.movimentacao, this.Status.velocity);
         this.movement.LookAround(LayerMask);
-       
+
     }
 
     public void TakeDamage(int damageValue)

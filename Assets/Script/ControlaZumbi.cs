@@ -18,6 +18,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     private Vector3 myPosition;
     private float walkAroundCounter;
     private ControlaInterface controlaInterface;
+    [HideInInspector] public ZombieSpawn ZombieSpawn;
 
     private readonly float medKitPercentageSpawn = 0.1f;
     private readonly float timeBetweenDirectionChange = 4;
@@ -122,6 +123,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
         DropHealthKit();
         ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
         this.controlaInterface.UpdateZombiesKilled();
+        this.ZombieSpawn.AnnounceZombieDeath();
         
     }
 
