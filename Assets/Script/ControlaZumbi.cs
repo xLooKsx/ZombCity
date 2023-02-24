@@ -120,6 +120,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     public void Die()
     {
         this.animationController.Death();
+        GetComponent<Collider>().enabled = false;
         this.enabled = false;
         DropHealthKit();
         ControlaAudio.Instance.PlayOneShot(ZombieHitSound);

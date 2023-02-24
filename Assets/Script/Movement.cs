@@ -32,6 +32,6 @@ public class Movement : MonoBehaviour {
     {
         this.rigidbody.constraints = RigidbodyConstraints.None;
         this.rigidbody.velocity = Vector3.zero;
-        GetComponent<Collider>().enabled = false;
+        
     }
 }
