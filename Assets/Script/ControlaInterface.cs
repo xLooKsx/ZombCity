@@ -10,13 +10,15 @@ public class ControlaInterface : MonoBehaviour {
     public GameObject GameOverPanel;
     public Text SurvivingText;
     public Text BestSurvivingTimeText;
+    public Text TextQuantityZombiesKilled;
 
     private ControlaJogador scriptControlaJogador;
     private float bestSurvivingTime;
     private int minutes = 0;
     private int seconds = 0;
+    private int zombiesKilled = 0;
     private readonly string initialSurvivingText = "Você Sobreviveu por {0}min e {1}s";
-    private readonly string bestSurvivingText = "Melhor Tempo {0}min e {1}s";
+    private readonly string bestSurvivingText = "Melhor Tempo {0}min e {1}s";    
 
     // Use this for initialization
     void Start () {
@@ -26,6 +28,7 @@ public class ControlaInterface : MonoBehaviour {
         this.UpdateSlideHealthbar();
         Time.timeScale = 1;
         this.bestSurvivingTime = PlayerPrefs.GetFloat("HiScore");
+        UpdateZombiesKilledText(this.zombiesKilled);
     }
 
     public void UpdateSlideHealthbar()
@@ -64,5 +67,16 @@ public class ControlaInterface : MonoBehaviour {
     {
        this.minutes = (int)time / 60;
         this.seconds = (int)time % 60;
+    }
+
+    public void UpdateZombiesKilled()
+    {
+        UpdateZombiesKilledText(this.zombiesKilled++);
+        
+    }
+
+    public void UpdateZombiesKilledText(int quantity)
+    {
+        this.TextQuantityZombiesKilled.text = string.Format("X {0}", this.zombiesKilled);
     }
 }

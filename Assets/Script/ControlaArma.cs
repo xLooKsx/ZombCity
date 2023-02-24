@@ -10,7 +10,7 @@ public class ControlaArma : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         if (Input.GetButtonDown("Fire1"))
         {
             ControlaAudio.Instance.PlayOneShot(this.shootSound);

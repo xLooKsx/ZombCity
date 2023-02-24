@@ -10,12 +10,28 @@ public class ZombieSpawn : MonoBehaviour {
 
     private float timeCount = 0;
     private GameObject player;
+    private int quantityOfZombiesAlive = 0;
+    private float currentLevelInSeconds = 0;
+    private int maxQuantityOfZombiesAlive = 2;    
+
     private readonly float zombieRadiusSpawn = 3;
     private readonly float definedDistanceFromThePlayer = 20;
+    private readonly float nextLevelInSeconds = 10;
+    
 
     private void Start()
     {
         this.player = GameObject.FindWithTag("Player");
+        GenerateStarterZombies();
+        currentLevelInSeconds = nextLevelInSeconds;
+    }
+
+    private void GenerateStarterZombies()
+    {
+        for(int i= 0; i< this.maxQuantityOfZombiesAlive; i++)
+        {
+            StartCoroutine(GenerateANewZombie());
+        }
     }
 
     // Update is called once per frame
@@ -23,7 +39,9 @@ public class ZombieSpawn : MonoBehaviour {
 
         float distanceFromThePlayer = Vector3.Distance(transform.position, this.player.transform.position);
         bool isPLayerDistanteFromThisSpawn = distanceFromThePlayer > this.definedDistanceFromThePlayer;
-        if (isPLayerDistanteFromThisSpawn)
+        bool canSpawnZombies = this.quantityOfZombiesAlive < this.maxQuantityOfZombiesAlive;
+
+        if (isPLayerDistanteFromThisSpawn && canSpawnZombies)
         {
             timeCount += Time.deltaTime;
 
@@ -35,6 +53,11 @@ public class ZombieSpawn : MonoBehaviour {
             }
         }
 
+        if(Time.timeSinceLevelLoad > this.currentLevelInSeconds)
+        {
+            maxQuantityOfZombiesAlive ++;
+            this.currentLevelInSeconds += this.nextLevelInSeconds;
+        }
              
 	}
 
@@ -47,8 +70,10 @@ public class ZombieSpawn : MonoBehaviour {
             yield return null;
 
         } while (!IsRandomPositionGood(randomPosition));
-               
-        Instantiate(Zombie, randomPosition, transform.rotation);
+
+        ControlaZumbi controlaZumbi = Instantiate(Zombie, randomPosition, transform.rotation).GetComponent<ControlaZumbi>();
+        controlaZumbi.ZombieSpawn = this;
+        this.quantityOfZombiesAlive++;
     }
 
     bool IsRandomPositionGood(Vector3 randomPosition)
@@ -70,5 +95,10 @@ public class ZombieSpawn : MonoBehaviour {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, zombieRadiusSpawn);
              
+    }
+
+    public void AnnounceZombieDeath()
+    {
+        this.quantityOfZombiesAlive--;
     }
 }

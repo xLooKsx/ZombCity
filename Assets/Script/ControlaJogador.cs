@@ -35,7 +35,7 @@ public class ControlaJogador : MonoBehaviour, IDamage {
     {
         this.movement.Move(this.movimentacao, this.Status.velocity);
         this.movement.LookAround(LayerMask);
-       
+
     }
 
     public void TakeDamage(int damageValue)
@@ -48,6 +48,12 @@ public class ControlaJogador : MonoBehaviour, IDamage {
             this.Die();
         }
            
+    }
+
+    public void RecieveHeal(int amount)
+    {
+        this.Status.SetAmountToHeal(amount);
+        this.ScriptControlaInterface.UpdateSlideHealthbar();
     }
 
     public void Die()
