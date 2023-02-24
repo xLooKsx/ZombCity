@@ -119,12 +119,20 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        this.animationController.Death();
+        this.enabled = false;
         DropHealthKit();
         ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
         this.controlaInterface.UpdateZombiesKilled();
         this.ZombieSpawn.AnnounceZombieDeath();
-        
+        StartCoroutine(Disappear());
+    }
+
+    IEnumerator Disappear()
+    {
+        yield return new WaitForSeconds(5);
+        this.movement.Death();        
+        Destroy(this.gameObject, 2);
     }
 
     private Vector3 GenerateRandomPosition()

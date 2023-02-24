@@ -27,4 +27,11 @@ public class Movement : MonoBehaviour {
             this.rigidbody.MoveRotation(rotation);
         }
     }
+
+    public void Death()
+    {
+        this.rigidbody.constraints = RigidbodyConstraints.None;
+        this.rigidbody.velocity = Vector3.zero;
+        GetComponent<Collider>().enabled = false;
+    }
 }

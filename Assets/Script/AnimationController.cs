@@ -20,4 +20,9 @@ public class AnimationController : MonoBehaviour {
     {
         animator.SetFloat("isRunning", value);
     }
+
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+    }
 }
