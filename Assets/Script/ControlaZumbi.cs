@@ -119,7 +119,10 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 3);
+        this.animationController.ZombieDeath();
+        this.movement.Death();
+        this.enabled = false;
         DropHealthKit();
         ControlaAudio.Instance.PlayOneShot(ZombieHitSound);
         this.controlaInterface.UpdateZombiesKilled();
