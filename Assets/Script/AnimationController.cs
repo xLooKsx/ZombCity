@@ -6,7 +6,6 @@ public class AnimationController : MonoBehaviour {
 
     private Animator animator;
 
-    // Use this for initialization
     void Start () {
         this.animator = GetComponent<Animator>();
     }
@@ -19,5 +18,9 @@ public class AnimationController : MonoBehaviour {
 	public void Walk(float value)
     {
         animator.SetFloat("isRunning", value);
+    }
+
+    public void ZombieDeath(){
+        animator.SetTrigger("dead");
     }
 }
