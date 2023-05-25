@@ -725,9 +725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd78de4272cb1fd41b0925c5eb33305b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLife: 100
+  MaxLife: 500
   Life: 0
-  velocity: 5
+  velocity: 15
 --- !u!114 &114309329342398328
 MonoBehaviour:
   m_ObjectHideFlags: 1
