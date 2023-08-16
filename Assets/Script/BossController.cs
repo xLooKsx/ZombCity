@@ -11,6 +11,7 @@ public class BossController : MonoBehaviour, IDamage
     private Status bossStatus;
     private AnimationController animationController;
     private Movement movement;
+    public GameObject medKitPrefab;
 
     private void Start()
     {
@@ -63,6 +64,7 @@ public class BossController : MonoBehaviour, IDamage
         this.movement.Death();
         this.enabled = false;
         this.navMeshAgent.enabled = false;
+        Instantiate(medKitPrefab, transform.position, Quaternion.identity);
         Destroy(this, 2);
     }
 }
