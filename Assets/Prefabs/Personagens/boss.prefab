@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114108962449773552}
   m_Layer: 9
   m_Name: boss
-  m_TagString: Inimigo
+  m_TagString: boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,8 +681,8 @@ Rigidbody:
   m_Mass: 100
   m_Drag: 1
   m_AngularDrag: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -714,6 +714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d59e84c607f26d4f8eb0fce366d0cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  medKitPrefab: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
+    type: 2}
 --- !u!114 &114281077525777214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,7 +729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxLife: 500
   Life: 0
-  velocity: 15
+  velocity: 5
 --- !u!114 &114309329342398328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -840,7 +842,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

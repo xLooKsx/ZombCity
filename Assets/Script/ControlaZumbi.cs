@@ -99,7 +99,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
 
     void generateAnRandomZombieSkin()
     {
-        zombieType = Random.Range(1, 28);
+        zombieType = Random.Range(1, transform.childCount);
         transform.GetChild(zombieType).gameObject.SetActive(true);
     }
 
