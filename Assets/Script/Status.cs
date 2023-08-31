@@ -10,7 +10,7 @@ public class Status : MonoBehaviour {
 
     public float velocity = 5;
 
-    private void Start()
+    private void Awake()
     {
         this.Life = MaxLife;
     }
