@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour, IDamage
 {
@@ -12,8 +13,12 @@ public class BossController : MonoBehaviour, IDamage
     private AnimationController animationController;
     private Movement movement;
     public GameObject medKitPrefab;
+    public Slider sliderVidaChefe;
+    public Image imagemSlider;
+    public Color CorDavidaMaxima;
+    public Color CorDavidaMinima;
 
-    private void Start()
+    void Start()
     {
         player = GameObject.FindWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -21,6 +26,8 @@ public class BossController : MonoBehaviour, IDamage
         this.animationController = GetComponent<AnimationController>();
         this.movement = GetComponent<Movement>();
         this.navMeshAgent.speed = bossStatus.velocity;
+        this.sliderVidaChefe.maxValue = this.bossStatus.MaxLife;
+        AtualizarInterface();
     }
 
     private void Update()
@@ -52,7 +59,8 @@ public class BossController : MonoBehaviour, IDamage
     public void TakeDamage(int damageValue)
     {
         this.bossStatus.Life -= damageValue;
-        if(this.bossStatus.Life <= 0)
+        AtualizarInterface();
+        if (this.bossStatus.Life <= 0)
         {
             Die();
         }
@@ -66,5 +74,13 @@ public class BossController : MonoBehaviour, IDamage
         this.navMeshAgent.enabled = false;
         Instantiate(medKitPrefab, transform.position, Quaternion.identity);
         Destroy(this, 2);
+    }
+
+    void AtualizarInterface()
+    {
+        this.sliderVidaChefe.value = this.bossStatus.Life;
+        float porcentagemDaVida = (float) this.bossStatus.Life / this.bossStatus.MaxLife;
+        Color corDaVida = Color.Lerp(CorDavidaMinima, CorDavidaMaxima, porcentagemDaVida);
+        imagemSlider.color = corDaVida;
     }
 }
