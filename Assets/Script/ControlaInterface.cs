@@ -91,6 +91,7 @@ public class ControlaInterface : MonoBehaviour {
         textoParaSumir.gameObject.SetActive(true);
         Color corTexto = textoParaSumir.color;
         corTexto.a = 1;
+        textoParaSumir.color = corTexto;
 
         yield return new WaitForSeconds(tempoDeSumico);
         float contador = 0;
