@@ -11,6 +11,7 @@ public class ControlaInterface : MonoBehaviour {
     public Text SurvivingText;
     public Text BestSurvivingTimeText;
     public Text TextQuantityZombiesKilled;
+    public Text TextoChefeAparece;
 
     private ControlaJogador scriptControlaJogador;
     private float bestSurvivingTime;
@@ -78,5 +79,31 @@ public class ControlaInterface : MonoBehaviour {
     public void UpdateZombiesKilledText(int quantity)
     {
         this.TextQuantityZombiesKilled.text = string.Format("X {0}", this.zombiesKilled);
+    }
+
+    public void AparecerTextoChefeCriado()
+    {
+        StartCoroutine(DesaparecerTexto(2, TextoChefeAparece));
+    }
+
+    IEnumerator DesaparecerTexto(float tempoDeSumico, Text textoParaSumir)
+    {
+        textoParaSumir.gameObject.SetActive(true);
+        Color corTexto = textoParaSumir.color;
+        corTexto.a = 1;
+
+        yield return new WaitForSeconds(tempoDeSumico);
+        float contador = 0;
+        while (textoParaSumir.color.a > 0)
+        {
+            contador += Time.deltaTime / tempoDeSumico;
+            corTexto.a = Mathf.Lerp(1, 0, contador);
+            textoParaSumir.color = corTexto;
+            if(textoParaSumir.color.a <= 0)
+            {
+                textoParaSumir.gameObject.SetActive(false);
+            }
+            yield return null;
+        }
     }
 }

@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 223712488170210072}
   - component: {fileID: 114070673440808760}
   - component: {fileID: 114855957514087188}
+  - component: {fileID: 114875845759463794}
   m_Layer: 5
   m_Name: BarraSaude
   m_TagString: Untagged
@@ -404,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1899931290364516
 GameObject:
   m_ObjectHideFlags: 1
@@ -875,7 +876,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 972fb237b0acad44aab894df24563b3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 576940aaad84a2f45abac2e9979ea810, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -897,6 +898,9 @@ MonoBehaviour:
   medKitPrefab: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
     type: 2}
   sliderVidaChefe: {fileID: 114036699076714140}
+  imagemSlider: {fileID: 114104265049350264}
+  CorDavidaMaxima: {r: 0.32941177, g: 1, b: 0.32941177, a: 1}
+  CorDavidaMinima: {r: 1, g: 0.32941177, b: 0.32941177, a: 1}
 --- !u!114 &114281077525777214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -952,7 +956,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4a99ac70b6cb71f46bf51cba280c2a76, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -976,6 +980,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114875845759463794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458647048447626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea435babc4851c488418944420afdd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136937294530844144
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class BossSpawn : MonoBehaviour {
 
-    private float timeToNextSpawn = 0;
     public GameObject bossPrefab;
     public float timeBetweenEachSpawn = 60;
+    public ControlaInterface scriptControlaInterface;
+
+    private float timeToNextSpawn = 0;
 
     private void Start()
     {
         timeToNextSpawn = timeBetweenEachSpawn;
+        scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
     }
 
     private void Update()
@@ -18,6 +21,7 @@ public class BossSpawn : MonoBehaviour {
         if(Time.timeSinceLevelLoad > timeToNextSpawn)
         {
             Instantiate(bossPrefab, transform.position, Quaternion.identity);
+            scriptControlaInterface.AparecerTextoChefeCriado();
             timeToNextSpawn = Time.timeSinceLevelLoad + timeBetweenEachSpawn;
         }
     }
