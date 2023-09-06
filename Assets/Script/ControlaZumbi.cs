@@ -7,6 +7,7 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
     public AudioClip ZombieHitSound;
     public float distance;
     public GameObject medKitPrefab;
+    public GameObject particulaSangue;
     
 
     private int zombieType;
@@ -115,6 +116,11 @@ public class ControlaZumbi : MonoBehaviour, IDamage{
         {           
             this.Die();
         }
+    }
+
+    public void ParticulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(particulaSangue, posicao, rotacao);
     }
 
     public void Die()

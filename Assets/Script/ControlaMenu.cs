@@ -16,14 +16,26 @@ public class ControlaMenu : MonoBehaviour {
 
     public void JogarJogo()
     {
-        SceneManager.LoadScene("Hotel");
+        StartCoroutine(MudarCena("Hotel"));
     }
 
     public void SairJogo()
     {
+        StartCoroutine(Sair());
+    }
+
+    IEnumerator MudarCena(string nomeCena)
+    {
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadScene(nomeCena);
+    }
+
+    IEnumerator Sair()
+    {
+        yield return new WaitForSeconds(0.3f);
         Application.Quit();
         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
 }

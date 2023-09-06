@@ -1395,6 +1395,8 @@ MonoBehaviour:
   distance: 0
   medKitPrefab: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
     type: 2}
+  particulaSangue: {fileID: 1848556747507856, guid: 8d55d39297c5a8f4aa6e5a4cb861fa44,
+    type: 2}
   ZombieSpawn: {fileID: 0}
 --- !u!114 &114281077525777214
 MonoBehaviour:

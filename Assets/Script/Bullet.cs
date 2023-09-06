@@ -22,13 +22,18 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider objetoDeColisao)
     {
+        Quaternion rotacaoOpostABala = Quaternion.LookRotation(-transform.forward);
         switch (objetoDeColisao.tag)
-        {
+        {        
             case "Inimigo":
-                objetoDeColisao.GetComponent<ControlaZumbi>().TakeDamage(damage);
+                ControlaZumbi controlaZumbi = objetoDeColisao.GetComponent<ControlaZumbi>();
+                controlaZumbi.TakeDamage(damage);
+                controlaZumbi.ParticulaSangue(transform.position, rotacaoOpostABala);
                 break;
             case "boss":
-                objetoDeColisao.GetComponent<BossController>().TakeDamage(damage);
+                BossController bossController = objetoDeColisao.GetComponent<BossController>();
+                bossController.TakeDamage(damage);
+                bossController.ParticulaSangue(transform.position, rotacaoOpostABala);
                 break;
         }
         Destroy(this.gameObject);
