@@ -17,6 +17,7 @@ public class BossController : MonoBehaviour, IDamage
     public Image imagemSlider;
     public Color CorDavidaMaxima;
     public Color CorDavidaMinima;
+    public GameObject particulaSangue;
 
     void Start()
     {
@@ -82,5 +83,10 @@ public class BossController : MonoBehaviour, IDamage
         float porcentagemDaVida = (float) this.bossStatus.Life / this.bossStatus.MaxLife;
         Color corDaVida = Color.Lerp(CorDavidaMinima, CorDavidaMaxima, porcentagemDaVida);
         imagemSlider.color = corDaVida;
+    }
+
+    public void ParticulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(particulaSangue, posicao, rotacao);
     }
 }
